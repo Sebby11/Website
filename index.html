@@ -1,3 +1,5 @@
+<!-- Lines 17-42 && 69-123 modified from: https://www.w3schools.com/howto/howto_js_slideshow.asp -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +11,35 @@
 		  margin-left: auto;
 		  margin-right: auto;
 		}
+
 		h1, h4, h2, h3, p {text-align: center;}
+
+		.PicsContainer{
+			max-width: 1000px;
+			position: relative;
+			margin: auto;
+		}
+
+		.prev, .next {
+			cursor: cell;
+			position: absolute;
+			top: 50%;
+			width: auto;
+			margin-top: -22px;
+			padding: 16px;
+			color: white;
+			font-weight: bold;
+			font-size: 18px;
+			transition: 0.6s ease;
+		}
+
+		.next {
+			right: 0;
+		}
+
+		.prev:hover, .next:hover {
+			background-color: rgba(0,0,0,0.8);
+		}
     </style>
   </head>
 
@@ -36,6 +66,61 @@
 
   	<h2><b>Hobby stuff</b></h2>
   	<h3>≈≈Pictures I took/enjoy≈≈</h3>
+  	<div class="PicsContainer">
+  		<!-- Add pics -->
+  		<div class="slidePics">
+  			<img src="Pics/SCDeer.PNG" style="width:100%">
+  			<div class="txt">Lovely Deer close to UCSC Music Hall</div>
+  		</div>
+
+  		<div class="slidePics">
+  			<img src="Pics/Bentley.JPG" style="width:100%">
+  			<div class="txt">Young Bentley on a nice walk</div>
+  		</div>
+
+  		<div class="slidePics">
+  			<img src="Pics/Isaiah.JPG" style="width:100%">
+  			<div class="txt">Isaiah at a fire</div>
+  		</div>
+
+  		<div class="slidePics">
+  			<img src="Pics/SF.PNG" style="width:100%">
+  			<div class="txt">SF pics that are kinda hard to look at</div>
+  		</div>
+
+  		<div class="slidePics">
+  			<img src="Pics/Schierke.PNG" style="width:80%">
+  			<div class="txt">Favorite Berserk character <3</div>
+  		</div>
+
+  		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+		<a class="next" onclick="plusSlides(1)">&#10095;</a>
+  	</div>
+  	<br>
+
+  	<script>
+		var slideIndex = 1;
+		showSlides(slideIndex);
+
+		function plusSlides(n) {
+		  showSlides(slideIndex += n);
+		}
+
+		function currentSlide(n) {
+		  showSlides(slideIndex = n);
+		}
+
+		function showSlides(n) {
+		  var i;
+		  var slides = document.getElementsByClassName("slidePics");
+		  if (n > slides.length) {slideIndex = 1}    
+		  if (n < 1) {slideIndex = slides.length}
+		  for (i = 0; i < slides.length; i++) {
+		      slides[i].style.display = "none";  
+		  }
+		  slides[slideIndex-1].style.display = "inline";
+		}
+	</script>
 
   </body>
 </html>
